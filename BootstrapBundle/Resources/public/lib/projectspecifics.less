@@ -1,0 +1,155 @@
+/* projectspecifics.less
+ * All the specific styles related to your project
+ * ---------------------------------------------------------------------------------------- */
+
+// Extending variables in variables.less
+//-----------------------------------------
+@baseColor:         @gray;
+@baseColorText:     "gray"; 
+@lighten:           lighten(@baseColor, 40%);
+@linkColor:         @green;
+
+// Project variables
+//-------------------
+
+// Colors
+@facebookBlueLight: #6776AF; //#9eaccb;
+@facebookBlueDark:  #3E4D9A;
+@midLighten:        lighten(@baseColor, 30%);
+
+// Borders and Shadows
+@shadowInset: inset 0 2px 4px rgba(0,0,0,.25), 0 1px 2px rgba(0,0,0,.05);
+@shadow: 0 2px 4px rgba(0,0,0,.25), 0 1px 2px rgba(0,0,0,.05);
+@border: 1px solid @midLighten;
+
+// URLs
+@publicResourcesBundle:   "migolcommonpages";
+@baseAssetsURL:     "../../@{publicResourcesBundle}";
+@baseImagesURL:     "@{baseAssetsURL}/images/";
+
+// Extending bootstrap styles 
+//-----------------------------------------
+
+h1{
+    small{
+        color: @gray;
+    }
+}
+p{
+    small{
+        color: @gray;
+    }
+}
+.btn{
+    &.superlarge{
+        font-size: @basefont + 10px;
+        line-height: normal;
+        padding: 9px 25px 9px;
+        .border-radius(4px);
+    }
+    &.facebook, .facebook:hover {
+        .gradientBar(@facebookBlueLight, @facebookBlueDark);
+        color: @white;
+    }
+    &.orange, .orange:hover{
+        color: @white;
+    }
+    &.orange{
+        .gradientBar(lighten(@orange, 20%), @orange);
+    }
+    
+}
+
+
+
+// Project Mixins
+//-------------------
+.border(@border: 1px solid @baseColor){
+    border: @border;
+}
+.sprite-icon(@imageurl:"image.png", @marginright: 5px, @marginleft: 0px, @left: 0px, @top: 0px, @width: 15px, @minheight: 30px, @float: left){
+
+    display:    block;
+    float:      @float;
+    margin-right:   @marginright;
+    background-image:   url("@{imageurl}");
+    background-repeat:  no-repeat;
+    background-position: @left @top;
+    width: @width; 
+    min-height: @minheight;
+}
+.sprite(@imageurl:"image.png",
+                @left: 0px, 
+                @top: 0px ){
+
+    background-image:   url("@{imageurl}");
+    background-repeat:  no-repeat;
+    background-position: @left @top;        
+
+}
+// Project styles
+//-------------------
+
+// Containers
+.body-background{
+    background-color:   @lighten;
+}
+.index-worldmap-bg{
+    @imageurl: "@{baseImagesURL}bgs/worldmap.png";
+    .sprite(@imageurl, 30px, 50px);
+}
+
+.black-transparent-box{
+    background-color: fadeout(@black, 80%);
+    .border-radius(6px);
+}
+.white-transparent-box{
+    background-color: fadeout(@white, 30%);
+    .border-radius(6px);
+    .border(@border);
+}
+
+// Icons and Sprites
+.icon-facebook{
+        @imageurl: "@{baseImagesURL}bgs/sprites-@{baseColorText}.png";
+        @marginright: 10px; 
+        @marginleft: 0px;
+        @left: -110px;
+        @top: -10px;
+        @width: 15px;
+        @minheight: 30px;
+        @float: left;
+        .sprite-icon(@imageurl, @marginright, @marginleft, @left, @top, @width, @minheight,@float);    
+}
+.icon-facebook-small{
+        @imageurl: "@{baseImagesURL}bgs/sprites-@{baseColorText}.png";
+        @marginright: 10px; 
+        @marginleft: 0px;
+        @left: -164px;
+        @top: -18px;
+        @width: 8px;
+        @minheight: 15px;
+        @float: left;
+        .sprite-icon(@imageurl, @marginright, @marginleft, @left, @top, @width, @minheight,@float);    
+}
+.padlock{
+        @imageurl: "@{baseImagesURL}bgs/sprites-@{baseColorText}.png";
+        @marginright: 10px; 
+        @marginleft: 0px;
+        @left: -67px;
+        @top: -14px;
+        @width: 12px;
+        @minheight: 20px;
+        @float: left;
+        .sprite-icon(@imageurl, @marginright, @marginleft, @left, @top, @width, @minheight,@float);  
+}
+
+// Types
+.white-text{
+    color: @white;
+}
+
+// Other Color Links
+a.yellow{
+    color:  @yellow;
+}
